@@ -17,17 +17,16 @@
 ## (Comments)
 #Sample feature Definition Template
 
-Feature: WomenDress
+Feature: Login
 
-Scenario Outline: Show Women Dress
+Scenario Outline: Login User
 
 Given the user is in the index page
-When the user clicks the products option
-And the user enters <article> in the search bar
-And the user clicks the search button
-Then the <article> list appears
+When the user clicks the login option
+And the user enters <username> <password> in the login form
+And the user clicks button login
+Then user has successfully logged in
 
 Examples:
-|article|
-|dress|
-|jeans|
+  | username    | password       |
+  | practicatqs | practicatqs123 |
