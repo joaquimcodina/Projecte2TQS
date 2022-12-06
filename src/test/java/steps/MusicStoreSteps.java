@@ -43,6 +43,18 @@ public class MusicStoreSteps {
     Assert.assertTrue(valid.contains("Practica TQS"));
   }
 
+  @When("the user clicks button logout")
+  public void theUserClicksButtonLogout() {
+    driver.findElement(By.cssSelector(".top-links li:nth-of-type(6)")).click();
+  }
+
+  @Then("user has successfully logged out")
+  public void userHasSuccessfullyLoggedOut() {
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    String valid = driver.findElement(By.className("page-head")).getText();
+    Assert.assertTrue(valid.contains("Ha cerrado su sesión correctamente"));
+  }
+
   @When("the user adds a new vinyls to the cart")
   public void theUserAddsANewVinylsToTheCart() {
     WebElement element1 = driver.findElement(By.cssSelector("tr:nth-of-type(2) td:nth-of-type(1) a:nth-of-type(2)"));
