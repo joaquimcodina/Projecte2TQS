@@ -17,16 +17,20 @@
 ## (Comments)
 #Sample feature Definition Template
 
-Feature: Login
+Feature: MusicStore Scenarios
 
-Scenario Outline: Login User
+  Scenario Outline: Login User
+    Given the user is in the index page
+    When the user clicks the login option
+    And the user enters <email> <password> in the login form
+    And the user clicks button login
+    Then user has successfully logged in
+    Examples:
+      | email                  | password       |
+      | practica.tqs@gmail.com | practicatqs123 |
 
-Given the user is in the index page
-When the user clicks the login option
-And the user enters <username> <password> in the login form
-And the user clicks button login
-Then user has successfully logged in
-
-Examples:
-  | username    | password       |
-  | practicatqs | practicatqs123 |
+  Scenario: My cart
+    Given the user is in the index page
+    When the user adds a new vinyls to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully
