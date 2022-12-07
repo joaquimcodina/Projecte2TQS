@@ -41,6 +41,7 @@ public class MusicStoreSteps {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     String valid = driver.findElement(By.className("dashboard-welcome")).getText();
     Assert.assertTrue(valid.contains("Practica TQS"));
+    driver.close();
   }
 
   @When("the user clicks button logout")
@@ -53,6 +54,7 @@ public class MusicStoreSteps {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     String valid = driver.findElement(By.className("page-head")).getText();
     Assert.assertTrue(valid.contains("Ha cerrado su sesión correctamente"));
+    driver.close();
   }
 
   @When("the user adds a vinyls to the cart")
@@ -86,6 +88,7 @@ public class MusicStoreSteps {
   public void theVinylsHaveBeenAddedToTheCartSuccessfully() {
     String valid = driver.findElement(By.className("top-link-cart")).getText();
     Assert.assertTrue(valid.contains("3"));
+    driver.close();
   }
 
   @When("the user selects old gold category")
@@ -101,6 +104,11 @@ public class MusicStoreSteps {
   @When("the user selects trance category")
   public void theUserSelectsTranceCategory() {
     driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(3)")).click();
+  }
+
+  @When("the user selects tech-house category")
+  public void theUserSelectsTechHouseCategory() {
+    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(4)")).click();
   }
 
   @When("the user adds a vinyl of the selected category to the cart")
