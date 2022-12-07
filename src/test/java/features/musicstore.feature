@@ -40,8 +40,22 @@ Feature: MusicStore Scenarios
       | email                  | password       |
       | practica.tqs@gmail.com | practicatqs123 |
 
-  Scenario: My cart
+  Scenario: New Vinyls
     Given the user is in the index page
-    When the user adds a new vinyls to the cart
+    When the user adds a vinyls to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully
+
+  Scenario: Old Gold Category
+    Given the user is in the index page
+    When the user selects old gold category
+    And the user adds a vinyl of the selected category to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully
+
+  Scenario: Remember Category
+    Given the user is in the index page
+    When the user selects remember category
+    And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully

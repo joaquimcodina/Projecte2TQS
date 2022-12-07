@@ -55,8 +55,8 @@ public class MusicStoreSteps {
     Assert.assertTrue(valid.contains("Ha cerrado su sesión correctamente"));
   }
 
-  @When("the user adds a new vinyls to the cart")
-  public void theUserAddsANewVinylsToTheCart() {
+  @When("the user adds a vinyls to the cart")
+  public void theUserAddsAVinylsToTheCart() {
     WebElement element1 = driver.findElement(By.cssSelector("tr:nth-of-type(2) td:nth-of-type(1) a:nth-of-type(2)"));
     WebElement element2 = driver.findElement(By.cssSelector("tr:nth-of-type(2) td:nth-of-type(2) a:nth-of-type(2)"));
     WebElement element3 = driver.findElement(By.cssSelector("tr:nth-of-type(2) td:nth-of-type(3) a:nth-of-type(2)"));
@@ -86,5 +86,34 @@ public class MusicStoreSteps {
   public void theVinylsHaveBeenAddedToTheCartSuccessfully() {
     String valid = driver.findElement(By.className("top-link-cart")).getText();
     Assert.assertTrue(valid.contains("3"));
+  }
+
+  @When("the user selects old gold category")
+  public void theUserSelectsOldGoldCategory() {
+    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(1)")).click();
+  }
+
+  @When("the user adds a vinyl of the selected category to the cart")
+  public void theUserAddsAVinylOfTheSelectedCategoryToTheCart() {
+    WebElement element1 = driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(1) a:nth-of-type(2)"));
+    WebElement element2 = driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(2) a:nth-of-type(2)"));
+    WebElement element3 = driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(3) a:nth-of-type(2)"));
+
+    JavascriptExecutor executor1 = (JavascriptExecutor)driver;
+    executor1.executeScript("arguments[0].click();", element1);
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+    JavascriptExecutor executor2 = (JavascriptExecutor)driver;
+    executor2.executeScript("arguments[0].click();", element2);
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+    JavascriptExecutor executor3 = (JavascriptExecutor)driver;
+    executor3.executeScript("arguments[0].click();", element3);
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+  }
+
+  @When("the user selects remember category")
+  public void theUserSelectsRememberCategory() {
+    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(2)")).click();
   }
 }
