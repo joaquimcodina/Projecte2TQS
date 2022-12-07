@@ -93,6 +93,16 @@ public class MusicStoreSteps {
     driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(1)")).click();
   }
 
+  @When("the user selects remember category")
+  public void theUserSelectsRememberCategory() {
+    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(2)")).click();
+  }
+
+  @When("the user selects trance category")
+  public void theUserSelectsTranceCategory() {
+    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(3)")).click();
+  }
+
   @When("the user adds a vinyl of the selected category to the cart")
   public void theUserAddsAVinylOfTheSelectedCategoryToTheCart() {
     WebElement element1 = driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(1) a:nth-of-type(2)"));
@@ -110,10 +120,5 @@ public class MusicStoreSteps {
     JavascriptExecutor executor3 = (JavascriptExecutor)driver;
     executor3.executeScript("arguments[0].click();", element3);
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-  }
-
-  @When("the user selects remember category")
-  public void theUserSelectsRememberCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(2)")).click();
   }
 }
