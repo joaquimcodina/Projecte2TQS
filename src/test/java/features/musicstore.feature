@@ -94,3 +94,10 @@ Feature: MusicStore Scenarios
     And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
+
+  Scenario: Hardstyle Category
+    Given the user is in the index page
+    When the user selects hardstyle category
+    And the user adds a vinyl of the selected category to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully
