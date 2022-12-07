@@ -121,6 +121,11 @@ public class MusicStoreSteps {
     driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(6)")).click();
   }
 
+  @When("the user selects hardhouse category")
+  public void theUserSelectsHardhouseCategory() {
+    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(7)")).click();
+  }
+
   @When("the user adds a vinyl of the selected category to the cart")
   public void theUserAddsAVinylOfTheSelectedCategoryToTheCart() {
     WebElement element1 = driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(1) a:nth-of-type(2)"));
