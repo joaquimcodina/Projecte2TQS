@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import java.util.concurrent.TimeUnit;
 
@@ -219,5 +220,44 @@ public class MusicStoreSteps {
   @When("the user selects vinyl from the year 1985")
   public void theUserSelectsVinylFromTheYear() {
     driver.findElement(By.cssSelector("ol li:nth-of-type(1) a")).click();
+  }
+
+  @When("the user adds a vinyls to the wish list")
+  public void theUserAddsAVinylsToTheWishList() {
+    WebElement element1 = driver.findElement(By.cssSelector("tr:nth-of-type(2) td:nth-of-type(1) .add-to li a"));
+    Actions actions1 = new Actions(driver);
+    actions1.moveToElement(element1).click();
+
+    WebElement element2 = driver.findElement(By.cssSelector("tr:nth-of-type(2) td:nth-of-type(2) .add-to li a"));
+    Actions actions2 = new Actions(driver);
+    actions2.moveToElement(element2).click();
+
+    WebElement element3 = driver.findElement(By.cssSelector("tr:nth-of-type(2) td:nth-of-type(3) .add-to li a"));
+    Actions actions3 = new Actions(driver);
+    actions3.moveToElement(element3).click();
+  }
+
+  @When("the user clicks my account")
+  public void theUserClicksMyAccount() {
+    driver.findElement(By.cssSelector(".top-links li:nth-of-type(2) a")).click();
+  }
+
+  @When("the user clicks wish list")
+  public void theUserClicksWishList() {
+    driver.findElement(By.cssSelector(".content ul li:nth-of-type(5) a")).click();
+  }
+
+  @When("the user writes a comment")
+  public void theUserWritesAComment() {
+    driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(2) textarea")).sendKeys("I want this vinyl.");
+    driver.findElement(By.cssSelector("tr:nth-of-type(2) td:nth-of-type(2) textarea")).sendKeys("I want this vinyl.");
+    driver.findElement(By.cssSelector("tr:nth-of-type(3) td:nth-of-type(2) textarea")).sendKeys("I want this vinyl.");
+  }
+
+  @Then("the vinyls have been added to the wish list successfully")
+  public void theVinylsHaveBeenAddedToTheWishListSuccessfully() {
+    String valid = driver.findElement(By.cssSelector(".page-head h3")).getText();
+    Assert.assertTrue(valid.contains("Mi lista de deseos"));
+    driver.close();
   }
 }

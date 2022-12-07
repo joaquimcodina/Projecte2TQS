@@ -193,3 +193,17 @@ Feature: MusicStore Scenarios
     And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
+
+  Scenario Outline: Wish List
+    Given the user is in the index page
+    When the user clicks the login option
+    And the user enters <email> <password> in the login form
+    And the user clicks button login
+    And the user adds a vinyls to the wish list
+    And the user clicks my account
+    And the user clicks wish list
+    And the user writes a comment
+    Then the vinyls have been added to the wish list successfully
+    Examples:
+      | email                  | password       |
+      | practica.tqs@gmail.com | practicatqs123 |
