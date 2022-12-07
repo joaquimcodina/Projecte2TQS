@@ -23,7 +23,7 @@ public class MusicStoreSteps {
 
   @When("the user clicks the login option")
   public void theUserClicksTheProductsOption() {
-    driver.findElement(By.cssSelector(".top-links:nth-child(1) a")).click();
+    driver.findElement(By.cssSelector(".top-links li:nth-of-type(5) a")).click();
   }
 
   @When("^the user enters (.*) (.*) in the login form")
@@ -40,8 +40,8 @@ public class MusicStoreSteps {
   @Then("user has successfully logged in")
   public void userHasSuccessfullyLoggedIn() {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    String valid = driver.findElement(By.className("dashboard-welcome")).getText();
-    Assert.assertTrue(valid.contains("Practica TQS"));
+    String valid = driver.findElement(By.cssSelector(".top-links li:nth-of-type(6) a")).getText();
+    Assert.assertTrue(valid.contains("Cerrar sesión"));
     driver.close();
   }
 
