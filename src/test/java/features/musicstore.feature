@@ -185,3 +185,11 @@ Feature: MusicStore Scenarios
     And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
+
+  Scenario: Year 1985
+    Given the user is in the index page
+    When the user selects record-vinyl menu
+    And the user selects vinyl from the year 1985
+    And the user adds a vinyl of the selected category to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully

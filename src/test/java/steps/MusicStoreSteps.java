@@ -1,4 +1,5 @@
 package steps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -208,5 +209,15 @@ public class MusicStoreSteps {
     JavascriptExecutor executor3 = (JavascriptExecutor)driver;
     executor3.executeScript("arguments[0].click();", element3);
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+  }
+
+  @When("the user selects record-vinyl menu")
+  public void theUserSelectsRecordVinylMenu() {
+    driver.findElement(By.cssSelector(".nav-1 a")).click();
+  }
+
+  @When("the user selects vinyl from the year 1985")
+  public void theUserSelectsVinylFromTheYear() {
+    driver.findElement(By.cssSelector("ol li:nth-of-type(1) a")).click();
   }
 }
