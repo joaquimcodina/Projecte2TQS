@@ -204,3 +204,15 @@ Feature: MusicStore Scenarios
       | name        |
       | Precio      |
       | Fecha       |
+
+  Scenario Outline: PlayTrack
+    Given the user is in the index page
+    When the user clicks the login option
+    And the user enters <email> <password> in the login form
+    And the user clicks button login
+    And select record-vinyl menu
+    And select the first track of a random vinyl
+    Then the track has been played successfully
+    Examples:
+      | email                  | password       |
+      | practica.tqs@gmail.com | practicatqs123 |

@@ -1,4 +1,5 @@
 package steps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class MusicStoreSteps {
@@ -25,14 +28,16 @@ public class MusicStoreSteps {
   }
 
   @When("^the user enters (.*) (.*) in the login form")
-  public void theUserEntersPasswordInTheLoginForm(String username, String password) {
+  public void theUserEntersPasswordInTheLoginForm(String username, String password) throws InterruptedException {
     driver.findElement(By.id("email")).sendKeys(username);
     driver.findElement(By.id("pass")).sendKeys(password);
+    Thread.sleep(5000);
   }
 
   @When("the user clicks button login")
-  public void theUserClicksTheSearchButton() {
+  public void theUserClicksTheSearchButton() throws InterruptedException {
     driver.findElement(By.id("send2")).click();
+    Thread.sleep(5000);
   }
 
   @Then("user has successfully logged in")
@@ -203,5 +208,22 @@ public class MusicStoreSteps {
     Thread.sleep(5000);
     Select select = new Select(driver.findElement(By.cssSelector(".col-main table:nth-of-type(2) tbody tr td:nth-of-type(3) select")));
     select.selectByVisibleText(option);
+  }
+
+  @When("select the first track of a random vinyl")
+  public void selectTheFirstTrackOfARandomVinyl() throws InterruptedException {
+    WebElement element = driver.findElement(By.cssSelector("#product-list-table tbody tr:nth-of-type("+new Random().nextInt(7 + 2)+") td:nth-of-type("+new Random().nextInt(6 + 2)+") ul:nth-of-type(1) li:nth-of-type(1) span label a"));
+    JavascriptExecutor jse = (JavascriptExecutor)driver;
+    jse.executeScript("arguments[0].scrollIntoView()", element);
+    Thread.sleep(3000);
+    new Actions(driver).moveToElement(element).click().perform();
+  }
+
+  @Then("the track has been played successfully")
+  public void theTrackHasBeenPlayedSuccessfully() throws InterruptedException {
+    String valid = driver.findElement(By.cssSelector("video")).getTagName();
+    Assert.assertEquals(valid, "video");
+    Thread.sleep(15000);
+    driver.close();
   }
 }
