@@ -130,6 +130,11 @@ Feature: MusicStore Scenarios
     And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
+    # | 4338 | = 21st Century Records
+    # | 4334 | = Bit Music
+    # | 4454 | = Boy Records
+    # | 4676 | = Not On Label
+    # | 4489 | = Vale Music
     Examples:
       | stamp |
       | 4338  |
