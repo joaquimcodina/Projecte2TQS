@@ -52,26 +52,26 @@ Feature: MusicStore Scenarios
     And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
-#    #| 1 | = Old Gold Category
-#    #| 2 | = Remember Category
-#    #| 3 | = Trance Category
-#    #| 4 | = Tech-House Category
-#    #| 5 | = Hard-Dance Category
-#    #| 6 | = Hardcore Category
-#    #| 7 | = Hardhouse Category
-#    #| 8 | = Hardstyle Category
-#    #| 9 | = Minimal Category
-#    #| 10 | = Progressive Category
-#    #| 11 | = Techno Category
-#    #| 12 | = Cantaditas Category
-#    #| 13 | = DrumBass Category
-#    #| 14 | = Otros estilos Category
-#    #| 15 | = Bases Antiguas Category
-#    #| 16 | = Melodiones Category
-#    #| 17 | = Prog Remember Category
-#    #| 18 | = Picture Disc Category
-#    #| 19 | = Acid Category
-#    #| 20 | = Euro House Category
+    # | 1 | = Old Gold Category
+    # | 2 | = Remember Category
+    # | 3 | = Trance Category
+    # | 4 | = Tech-House Category
+    # | 5 | = Hard-Dance Category
+    # | 6 | = Hardcore Category
+    # | 7 | = Hardhouse Category
+    # | 8 | = Hardstyle Category
+    # | 9 | = Minimal Category
+    # | 10 | = Progressive Category
+    # | 11 | = Techno Category
+    # | 12 | = Cantaditas Category
+    # | 13 | = DrumBass Category
+    # | 14 | = Otros estilos Category
+    # | 15 | = Bases Antiguas Category
+    # | 16 | = Melodiones Category
+    # | 17 | = Prog Remember Category
+    # | 18 | = Picture Disc Category
+    # | 19 | = Acid Category
+    # | 20 | = Euro House Category
     Examples:
       | category |
       | 1 |
@@ -122,6 +122,26 @@ Feature: MusicStore Scenarios
       | 16 |
       | 17 |
       | 18 |
+
+  Scenario Outline: FilterBy
+    Given the user is in the index page
+    When select record-vinyl menu
+    And filter by <category> <year>
+    And the user adds a vinyl of the selected category to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully
+    #| 1 | = Trance             | 2 | = 1992
+    #| 2 | = Hardstyle          | 3 | = 2001
+    #| 10 | = Hardcore/Makina   | 5 | = 1996
+    #| 11 | = Techno            | 1 | = 1991
+    #| 12 | = Remember          | 4 | = 1995
+    Examples:
+      | category |  | year |
+      | 1       |  | 2   |
+      | 2       |  | 3   |
+      | 10       |  | 5   |
+      | 11       |  | 1   |
+      | 12       |  | 7   |
 
   Scenario Outline: Wish List
     Given the user is in the index page

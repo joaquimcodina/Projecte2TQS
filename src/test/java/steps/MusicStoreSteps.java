@@ -1,4 +1,5 @@
 package steps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -125,9 +126,22 @@ public class MusicStoreSteps {
   @When("^select vinyl from the (.*)")
   public void selectVinylFromTheYear(int id) {
     WebElement element = driver.findElement(By.cssSelector("#narrow-by-list dd:nth-of-type(2) ol li:nth-of-type("+id+") a"));
-    JavascriptExecutor jse = (JavascriptExecutor)driver;
-    jse.executeScript("arguments[0].scrollIntoView()", element);
+    JavascriptExecutor jse2 = (JavascriptExecutor)driver;
+    jse2.executeScript("arguments[0].scrollIntoView()", element);
     new Actions(driver).moveToElement(element).click().perform();
+  }
+
+  @When("^filter by (.*) (.*)")
+  public void filterByCategoryYear(int category, int year) throws InterruptedException {
+    WebElement element1 = driver.findElement(By.cssSelector("#narrow-by-list dd:nth-of-type(1) ol li:nth-of-type("+category+") a"));
+    JavascriptExecutor jse = (JavascriptExecutor)driver;
+    jse.executeScript("arguments[0].scrollIntoView()", element1);
+    new Actions(driver).moveToElement(element1).click().perform();
+    Thread.sleep(3000);
+
+    WebElement element2 = driver.findElement(By.cssSelector("#narrow-by-list dd:nth-of-type(1) ol li:nth-of-type("+year+") a"));
+    jse.executeScript("arguments[0].scrollIntoView()", element2);
+    new Actions(driver).moveToElement(element2).click().perform();
     /*element = driver.findElement(By.cssSelector(".narrow-by script"));
     JavascriptExecutor executor = (JavascriptExecutor)driver;
     executor.executeScript("arguments[0].click();", element);
