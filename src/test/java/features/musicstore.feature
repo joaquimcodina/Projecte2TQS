@@ -40,6 +40,19 @@ Feature: MusicStore Scenarios
       | email                  | password       |
       | practica.tqs@gmail.com | practicatqs123 |
 
+  Scenario Outline: Modify Address Book
+    Given the user is in the index page
+    When the user clicks the login option
+    And the user enters <email> <password> in the login form
+    And the user clicks button login
+    And the user clicks button my account
+    And selects address book
+    And modifies data
+    Then the user has modified the data successfully
+    Examples:
+      | email                  | password       |
+      | practica.tqs@gmail.com | practicatqs123 |
+
   Scenario: New Vinyls
     Given the user is in the index page
     When the user adds a vinyls to the cart

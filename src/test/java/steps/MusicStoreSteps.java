@@ -1,5 +1,4 @@
 package steps;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -58,6 +57,55 @@ public class MusicStoreSteps {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     String valid = driver.findElement(By.className("page-head")).getText();
     Assert.assertTrue(valid.contains("Ha cerrado su sesión correctamente"));
+    driver.close();
+  }
+
+  @When("the user clicks button my account")
+  public void theUserClicksButtonMyAccount() {
+    driver.findElement(By.cssSelector(".top-links li:nth-of-type(2)")).click();
+  }
+
+  @When("selects address book")
+  public void selectsAddressBook() {
+    driver.findElement(By.cssSelector(".content ul li:nth-of-type(3)")).click();
+  }
+
+  @When("modifies data")
+  public void modifiesTheFirstAndLastName() throws InterruptedException {
+    driver.findElement(By.cssSelector(".primary-address-list ol li:nth-of-type(1) address strong a")).click();
+    Thread.sleep(10000);
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(1) ul li:nth-of-type(1) .customer-name .name-firstname #firstname")).clear();
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(1) ul li:nth-of-type(1) .customer-name .name-firstname #firstname")).sendKeys("Practica123");
+    Thread.sleep(3000);
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(1) ul li:nth-of-type(1) .customer-name .name-lastname #lastname")).clear();
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(1) ul li:nth-of-type(1) .customer-name .name-lastname #lastname")).sendKeys("TQS456");
+    Thread.sleep(3000);
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(1) ul li:nth-of-type(3) div:nth-of-type(1) #telephone")).clear();
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(1) ul li:nth-of-type(3) div:nth-of-type(1) #telephone")).sendKeys("666333222");
+    Thread.sleep(3000);
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(2) ul li:nth-of-type(1) #street_1")).clear();
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(2) ul li:nth-of-type(1) #street_1")).sendKeys("C/ Falsa, 123");
+    Thread.sleep(3000);
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(2) ul li:nth-of-type(3) div:nth-of-type(1) #city")).clear();
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(2) ul li:nth-of-type(3) div:nth-of-type(1) #city")).sendKeys("UAB");
+    Thread.sleep(3000);
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(2) ul li:nth-of-type(4) div:nth-of-type(1) #zip")).clear();
+    driver.findElement(By.cssSelector("#form-validate fieldset:nth-of-type(2) ul li:nth-of-type(4) div:nth-of-type(1) #zip")).sendKeys("12345");
+    Thread.sleep(3000);
+    Select select = new Select(driver.findElement(By.id("region_id")));
+    JavascriptExecutor jse2 = (JavascriptExecutor)driver;
+    jse2.executeScript("arguments[0].scrollIntoView()", select);
+    select.selectByValue("139");
+    Thread.sleep(5000);
+    WebElement element = driver.findElement(By.cssSelector(".button-set p input"));
+    JavascriptExecutor executor = (JavascriptExecutor)driver;
+    executor.executeScript("arguments[0].click();", element);
+  }
+
+  @Then("the user has modified the data successfully")
+  public void theUserHasModifiedTheDataSuccessfully() {
+    String valid = driver.findElement(By.cssSelector(".success-msg ul li span")).getText();
+    Assert.assertTrue(valid.contains("The address has been saved."));
     driver.close();
   }
 
