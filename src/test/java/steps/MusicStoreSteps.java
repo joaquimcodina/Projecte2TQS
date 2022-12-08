@@ -1,5 +1,4 @@
 package steps;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -93,108 +92,14 @@ public class MusicStoreSteps {
     driver.close();
   }
 
-  @When("the user selects old gold category")
-  public void theUserSelectsOldGoldCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(1)")).click();
-  }
-
-  @When("the user selects remember category")
-  public void theUserSelectsRememberCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(2)")).click();
-  }
-
-  @When("the user selects trance category")
-  public void theUserSelectsTranceCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(3)")).click();
-  }
-
-  @When("the user selects tech-house category")
-  public void theUserSelectsTechHouseCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(4)")).click();
-  }
-
-  @When("the user selects hard-dance category")
-  public void theUserSelectsHardDanceCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(5)")).click();
-  }
-
-  @When("the user selects hardcore category")
-  public void theUserSelectsHardcoreCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(6)")).click();
-  }
-
-  @When("the user selects hardhouse category")
-  public void theUserSelectsHardhouseCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(7)")).click();
-  }
-
-  @When("the user selects hardstyle category")
-  public void theUserSelectsHardstyleCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(8)")).click();
-  }
-
-  @When("the user selects minimal category")
-  public void theUserSelectsMinimalCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(9)")).click();
-  }
-
-  @When("the user selects progressive category")
-  public void theUserSelectsProgressiveCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(10)")).click();
-  }
-
-  @When("the user selects techno category")
-  public void theUserSelectsTechnoCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(11)")).click();
-  }
-
-  @When("the user selects cantaditas category")
-  public void theUserSelectsCantaditasCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(12)")).click();
-  }
-
-  @When("the user selects drumbass category")
-  public void theUserSelectsDrumbassCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(13)")).click();
-  }
-
-  @When("the user selects other category")
-  public void theUserSelectsOtherCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(14)")).click();
-  }
-
-  @When("the user selects old bases category")
-  public void theUserSelectsOldBasesCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(15)")).click();
-  }
-
-  @When("the user selects melodiones category")
-  public void theUserSelectsMelodionesCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(16)")).click();
-  }
-
-  @When("the user selects progremember category")
-  public void theUserSelectsProgrememberCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(17)")).click();
-  }
-
-  @When("the user selects picturedisc category")
-  public void theUserSelectsPicturediscCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(18)")).click();
-  }
-
-  @When("the user selects acid category")
-  public void theUserSelectsAcidCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(19)")).click();
-  }
-
-  @When("the user selects eurohouse category")
-  public void theUserSelectsEurohouseCategory() {
-    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type(20)")).click();
+  @When("^the user selects (.*)")
+  public void theUserSelectsCategory(int id) {
+    driver.findElement(By.cssSelector("#categorias-home a:nth-of-type("+id+")")).click();
   }
 
   @When("the user adds a vinyl of the selected category to the cart")
-  public void theUserAddsAVinylOfTheSelectedCategoryToTheCart() {
+  public void theUserAddsAVinylOfTheSelectedCategoryToTheCart() throws InterruptedException {
+    Thread.sleep(5000);
     WebElement element1 = driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(1) a:nth-of-type(2)"));
     WebElement element2 = driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(2) a:nth-of-type(2)"));
     WebElement element3 = driver.findElement(By.cssSelector("tr:nth-of-type(1) td:nth-of-type(3) a:nth-of-type(2)"));
@@ -212,14 +117,21 @@ public class MusicStoreSteps {
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
-  @When("the user selects record-vinyl menu")
+  @When("select record-vinyl menu")
   public void theUserSelectsRecordVinylMenu() {
     driver.findElement(By.cssSelector(".nav-1 a")).click();
   }
 
-  @When("the user selects vinyl from the year 1985")
-  public void theUserSelectsVinylFromTheYear() {
-    driver.findElement(By.cssSelector("ol li:nth-of-type(1) a")).click();
+  @When("^select vinyl from the (.*)")
+  public void selectVinylFromTheYear(int id) {
+    WebElement element = driver.findElement(By.cssSelector("#narrow-by-list dd:nth-of-type(2) ol li:nth-of-type("+id+") a"));
+    JavascriptExecutor jse = (JavascriptExecutor)driver;
+    jse.executeScript("arguments[0].scrollIntoView()", element);
+    new Actions(driver).moveToElement(element).click().perform();
+    /*element = driver.findElement(By.cssSelector(".narrow-by script"));
+    JavascriptExecutor executor = (JavascriptExecutor)driver;
+    executor.executeScript("arguments[0].click();", element);
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);*/
   }
 
   @When("the user adds a vinyls to the wish list")

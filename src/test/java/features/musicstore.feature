@@ -46,153 +46,82 @@ Feature: MusicStore Scenarios
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
 
-  Scenario: Old Gold Category
+  Scenario Outline: Categories
     Given the user is in the index page
-    When the user selects old gold category
+    When the user selects <category>
     And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
+#    #| 1 | = Old Gold Category
+#    #| 2 | = Remember Category
+#    #| 3 | = Trance Category
+#    #| 4 | = Tech-House Category
+#    #| 5 | = Hard-Dance Category
+#    #| 6 | = Hardcore Category
+#    #| 7 | = Hardhouse Category
+#    #| 8 | = Hardstyle Category
+#    #| 9 | = Minimal Category
+#    #| 10 | = Progressive Category
+#    #| 11 | = Techno Category
+#    #| 12 | = Cantaditas Category
+#    #| 13 | = DrumBass Category
+#    #| 14 | = Otros estilos Category
+#    #| 15 | = Bases Antiguas Category
+#    #| 16 | = Melodiones Category
+#    #| 17 | = Prog Remember Category
+#    #| 18 | = Picture Disc Category
+#    #| 19 | = Acid Category
+#    #| 20 | = Euro House Category
+    Examples:
+      | category |
+      | 1 |
+      | 2 |
+      | 3 |
+      | 4 |
+      | 5 |
+      | 6 |
+      | 7 |
+      | 8 |
+      | 9 |
+      | 10 |
+      | 11 |
+      | 12 |
+      | 13 |
+      | 14 |
+      | 15 |
+      | 16 |
+      | 17 |
+      | 18 |
+      | 19 |
+      | 20 |
 
-  Scenario: Remember Category
+  Scenario Outline: Years
     Given the user is in the index page
-    When the user selects remember category
+    When select record-vinyl menu
+    And select vinyl from the <year>
     And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
-
-  Scenario: Trance Category
-    Given the user is in the index page
-    When the user selects trance category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Tech-House Category
-    Given the user is in the index page
-    When the user selects tech-house category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Hard-Dance Category
-    Given the user is in the index page
-    When the user selects hard-dance category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Hardcore Category
-    Given the user is in the index page
-    When the user selects hardcore category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Hardhouse Category
-    Given the user is in the index page
-    When the user selects hardhouse category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Hardstyle Category
-    Given the user is in the index page
-    When the user selects hardstyle category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Minimal Category
-    Given the user is in the index page
-    When the user selects minimal category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Progressive Category
-    Given the user is in the index page
-    When the user selects progressive category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Techno Category
-    Given the user is in the index page
-    When the user selects techno category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Cantaditas Category
-    Given the user is in the index page
-    When the user selects cantaditas category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: DrumBass Category
-    Given the user is in the index page
-    When the user selects drumbass category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Other Category
-    Given the user is in the index page
-    When the user selects other category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Old Bases Category
-    Given the user is in the index page
-    When the user selects old bases category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Melodiones Category
-    Given the user is in the index page
-    When the user selects melodiones category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: ProgRemember Category
-    Given the user is in the index page
-    When the user selects progremember category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: PictureDisc Category
-    Given the user is in the index page
-    When the user selects picturedisc category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Acid Category
-    Given the user is in the index page
-    When the user selects acid category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: EuroHouse Category
-    Given the user is in the index page
-    When the user selects eurohouse category
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
-
-  Scenario: Year 1985
-    Given the user is in the index page
-    When the user selects record-vinyl menu
-    And the user selects vinyl from the year 1985
-    And the user adds a vinyl of the selected category to the cart
-    And the user clicks the my cart button
-    Then the vinyls have been added to the cart successfully
+    #| 10 | = 1994
+    #| 11 | = 1995
+    #| 12 | = 1996
+    #| 13 | = 1997
+    #| 14 | = 1998
+    #| 15 | = 1999
+    #| 16 | = 2000
+    #| 17 | = 2001
+    #| 18 | = 2002
+    Examples:
+      | year |
+      | 10 |
+      | 11 |
+      | 12 |
+      | 13 |
+      | 14 |
+      | 15 |
+      | 16 |
+      | 17 |
+      | 18 |
 
   Scenario Outline: Wish List
     Given the user is in the index page
