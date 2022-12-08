@@ -133,6 +133,14 @@ public class MusicStoreSteps {
     new Actions(driver).moveToElement(element).click().perform();
   }
 
+  @When("^select from the (.*)")
+  public void selectFromTheStamp(int id) {
+    Select select = new Select(driver.findElement(By.id("fabricante")));
+    JavascriptExecutor jse2 = (JavascriptExecutor)driver;
+    jse2.executeScript("arguments[0].scrollIntoView()", select);
+    select.selectByValue("https://www.welcomedjshop.com/discos-vinilos.html?fabricante="+id);
+  }
+
   @When("^filter by (.*) (.*)")
   public void filterByCategoryYear(int category, int year) throws InterruptedException {
     WebElement element1 = driver.findElement(By.cssSelector("#narrow-by-list dd:nth-of-type(1) ol li:nth-of-type("+category+") a"));

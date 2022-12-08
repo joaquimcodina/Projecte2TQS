@@ -123,6 +123,21 @@ Feature: MusicStore Scenarios
       | 17 |
       | 18 |
 
+  Scenario Outline: Stamp
+    Given the user is in the index page
+    When select record-vinyl menu
+    And select from the <stamp>
+    And the user adds a vinyl of the selected category to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully
+    Examples:
+      | stamp |
+      | 4338  |
+      | 4334  |
+      | 4454  |
+      | 4676  |
+      | 4489  |
+
   Scenario Outline: FilterBy
     Given the user is in the index page
     When select record-vinyl menu
