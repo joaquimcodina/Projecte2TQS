@@ -137,11 +137,11 @@ Feature: MusicStore Scenarios
     #| 12 | = Remember          | 4 | = 1995
     Examples:
       | category |  | year |
-      | 1       |  | 2   |
-      | 2       |  | 3   |
-      | 10       |  | 5   |
-      | 11       |  | 1   |
-      | 12       |  | 7   |
+      | 1        |  | 2    |
+      | 2        |  | 3    |
+      | 10       |  | 5    |
+      | 11       |  | 1    |
+      | 12       |  | 7    |
 
   Scenario Outline: Wish List
     Given the user is in the index page
@@ -169,3 +169,18 @@ Feature: MusicStore Scenarios
       | skudero   |
       | xque      |
       | dj tiesto |
+
+  Scenario Outline: SortBy
+    Given the user is in the index page
+    When select record-vinyl menu
+    And filter by <option>
+    And the user adds a vinyl of the selected category to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully
+    Examples:
+      | option      |
+      | Posición    |
+      | ref         |
+      | name        |
+      | Precio      |
+      | Fecha       |

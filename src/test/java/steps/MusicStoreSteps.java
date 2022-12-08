@@ -6,7 +6,12 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class MusicStoreSteps {
@@ -188,5 +193,12 @@ public class MusicStoreSteps {
   @When("the user clicks search button")
   public void theUserClicksSearchButton() {
     driver.findElement(By.id("search")).sendKeys(Keys.ENTER);
+  }
+
+  @When("^filter by (.*)")
+  public void filterByOption(String option) throws InterruptedException {
+    Thread.sleep(5000);
+    Select select = new Select(driver.findElement(By.cssSelector(".col-main table:nth-of-type(2) tbody tr td:nth-of-type(3) select")));
+    select.selectByVisibleText(option);
   }
 }
