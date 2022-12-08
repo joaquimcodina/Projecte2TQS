@@ -156,3 +156,16 @@ Feature: MusicStore Scenarios
     Examples:
       | email                  | password       |
       | practica.tqs@gmail.com | practicatqs123 |
+
+  Scenario Outline: Search
+    Given the user is in the index page
+    When the user search vinyls <name>
+    And the user clicks search button
+    And the user adds a vinyl of the selected category to the cart
+    And the user clicks the my cart button
+    Then the vinyls have been added to the cart successfully
+    Examples:
+      | name      |
+      | skudero   |
+      | xque      |
+      | dj tiesto |

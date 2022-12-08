@@ -3,10 +3,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -142,10 +139,6 @@ public class MusicStoreSteps {
     WebElement element2 = driver.findElement(By.cssSelector("#narrow-by-list dd:nth-of-type(1) ol li:nth-of-type("+year+") a"));
     jse.executeScript("arguments[0].scrollIntoView()", element2);
     new Actions(driver).moveToElement(element2).click().perform();
-    /*element = driver.findElement(By.cssSelector(".narrow-by script"));
-    JavascriptExecutor executor = (JavascriptExecutor)driver;
-    executor.executeScript("arguments[0].click();", element);
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);*/
   }
 
   @When("the user adds a vinyls to the wish list")
@@ -185,5 +178,15 @@ public class MusicStoreSteps {
     String valid = driver.findElement(By.cssSelector(".page-head h3")).getText();
     Assert.assertTrue(valid.contains("Mi lista de deseos"));
     driver.close();
+  }
+
+  @When("^the user search vinyls (.*)")
+  public void theUserSearchVinylsName(String name) {
+    driver.findElement(By.id("search")).sendKeys(name);
+  }
+
+  @When("the user clicks search button")
+  public void theUserClicksSearchButton() {
+    driver.findElement(By.id("search")).sendKeys(Keys.ENTER);
   }
 }
