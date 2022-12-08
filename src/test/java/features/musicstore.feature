@@ -154,7 +154,7 @@ Feature: MusicStore Scenarios
     #| 2 | = Hardstyle          | 3 | = 2001
     #| 10 | = Hardcore/Makina   | 5 | = 1996
     #| 11 | = Techno            | 1 | = 1991
-    #| 12 | = Remember          | 4 | = 1995
+    #| 12 | = Remember          | 7 | = 1995
     Examples:
       | category |  | year |
       | 1        |  | 2    |
