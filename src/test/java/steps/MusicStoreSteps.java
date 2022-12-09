@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -171,6 +171,21 @@ public class MusicStoreSteps {
   @When("select record-vinyl menu")
   public void theUserSelectsRecordVinylMenu() {
     driver.findElement(By.cssSelector(".nav-1 a")).click();
+  }
+
+  @When("select TopMusicBySuze")
+  public void selectTopMusicBySuze() {
+    driver.findElement(By.cssSelector(".nav-2 a")).click();
+  }
+
+  @Then("redirected to menu option successfully")
+  public void redirectedToMenuOptionSuccessfully() throws InterruptedException {
+    String[] array = {"TOP MUSIC BY SUZE", "EL RINCON DE C.MILLAN", "TEMAZOS", "REMEMBER 90´S",
+      "MATERIAL DJ", "OFERTAS"};
+    String valid = driver.findElement(By.cssSelector("#main .category-head h2")).getText();
+    Assert.assertTrue(Arrays.asList(array).contains(valid));
+    Thread.sleep(3000);
+    driver.close();
   }
 
   @When("^select vinyl from the (.*)")
