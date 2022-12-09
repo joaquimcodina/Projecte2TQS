@@ -178,6 +178,11 @@ public class MusicStoreSteps {
     driver.findElement(By.cssSelector(".nav-2 a")).click();
   }
 
+  @When("select RinconDeCMillan")
+  public void selectRinconDeCMillan() {
+    driver.findElement(By.cssSelector(".nav-3 a")).click();
+  }
+
   @Then("redirected to menu option successfully")
   public void redirectedToMenuOptionSuccessfully() throws InterruptedException {
     String[] array = {"TOP MUSIC BY SUZE", "EL RINCON DE C.MILLAN", "TEMAZOS", "REMEMBER 90´S",
