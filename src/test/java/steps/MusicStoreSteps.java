@@ -1,5 +1,4 @@
 package steps;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MusicStoreSteps {
   WebDriver driver;
+  int idRandom;
   @Given("the user is in the index page")
   public void theUserIsInTheIndexPage(){
     System.setProperty("webdriver.gecko.driver","drivers/geckodriver");
@@ -327,6 +327,26 @@ public class MusicStoreSteps {
     String title = driver.findElement(By.cssSelector(".header-top-right ul li:nth-of-type(3) a:nth-of-type("+new Random().nextInt(4 + 2) +")")).getAttribute("title");
     String[] array = title.split(" ");
     Assert.assertTrue(socialNetworks.contains(array[0]));
+    driver.close();
+  }
+
+  @When("select footer option")
+  public void selectFooterOption() throws InterruptedException {
+    idRandom = new Random().nextInt(6 + 2);
+    WebElement element = driver.findElement(By.cssSelector(".cards p a:nth-of-type("+idRandom+")"));
+    JavascriptExecutor jse = (JavascriptExecutor)driver;
+    jse.executeScript("arguments[0].scrollIntoView()", element);
+    Thread.sleep(3000);
+    new Actions(driver).moveToElement(element).click().perform();
+  }
+
+  @Then("redirected to footer option successfully")
+  public void redirectedToFooterOptionSuccessfully() throws InterruptedException {
+    String socialNetworks = "Condiciones de uso Formas de Pago Mapa del sitio Términos de búsqueda Búsqueda Avanzada Contacto";
+    String title = driver.findElement(By.cssSelector(".cards p a:nth-of-type("+idRandom+")")).getAttribute("title");
+    String[] array = title.split(" ");
+    Assert.assertTrue(socialNetworks.contains(array[0]));
+    Thread.sleep(5000);
     driver.close();
   }
 }
