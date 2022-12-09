@@ -1,4 +1,5 @@
 package steps;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -181,6 +182,11 @@ public class MusicStoreSteps {
   @When("select RinconDeCMillan")
   public void selectRinconDeCMillan() {
     driver.findElement(By.cssSelector(".nav-3 a")).click();
+  }
+
+  @When("select Temazos")
+  public void selectTemazos() {
+    driver.findElement(By.cssSelector(".nav-4 a")).click();
   }
 
   @Then("redirected to menu option successfully")

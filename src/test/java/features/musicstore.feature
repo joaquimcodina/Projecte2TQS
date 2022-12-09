@@ -212,6 +212,17 @@ Feature: MusicStore Scenarios
       | email                  | password       |
       | practica.tqs@gmail.com | practicatqs123 |
 
+  Scenario Outline: Temazos
+    Given the user is in the index page
+    When the user clicks the login option
+    And the user enters <email> <password> in the login form
+    And the user clicks button login
+    And select Temazos
+    Then redirected to menu option successfully
+    Examples:
+      | email                  | password       |
+      | practica.tqs@gmail.com | practicatqs123 |
+
   Scenario Outline: Search
     Given the user is in the index page
     When the user search vinyls <name>
