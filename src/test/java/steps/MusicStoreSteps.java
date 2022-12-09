@@ -318,13 +318,14 @@ public class MusicStoreSteps {
 
   @When("select SocialNetworks")
   public void selectSocialNetworks() {
-    driver.findElement(By.cssSelector(".header-top-right ul li:nth-of-type(3) a:nth-of-type("+new Random().nextInt(4 + 2) +")")).click();
+    idRandom = new Random().nextInt(4 + 2);
+    driver.findElement(By.cssSelector(".header-top-right ul li:nth-of-type(3) a:nth-of-type("+idRandom+")")).click();
   }
 
   @Then("redirected to socialnetwork successfully")
   public void redirectedToSocialnetworkSuccessfully() {
     String socialNetworks = "Twitter Facebook Instagram Twitch";
-    String title = driver.findElement(By.cssSelector(".header-top-right ul li:nth-of-type(3) a:nth-of-type("+new Random().nextInt(4 + 2) +")")).getAttribute("title");
+    String title = driver.findElement(By.cssSelector(".header-top-right ul li:nth-of-type(3) a:nth-of-type("+idRandom+")")).getAttribute("title");
     String[] array = title.split(" ");
     Assert.assertTrue(socialNetworks.contains(array[0]));
     driver.close();
