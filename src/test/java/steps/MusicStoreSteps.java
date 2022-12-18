@@ -15,11 +15,11 @@ public class MusicStoreSteps {
   WebDriver driver;
   int idRandom;
   @Given("the user is in the index page")
-  public void theUserIsInTheIndexPage(){
+  public void theUserIsInTheIndexPage() throws InterruptedException {
     System.setProperty("webdriver.gecko.driver","drivers/geckodriver");
     driver = new FirefoxDriver();
     driver.navigate().to("https://www.welcomedjshop.com/");
-    driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+    Thread.sleep(7000);
   }
 
   @When("the user clicks the login option")
@@ -41,8 +41,8 @@ public class MusicStoreSteps {
   }
 
   @Then("user has successfully logged in")
-  public void userHasSuccessfullyLoggedIn() {
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+  public void userHasSuccessfullyLoggedIn() throws InterruptedException {
+    Thread.sleep(10000);
     String valid = driver.findElement(By.cssSelector(".top-links li:nth-of-type(6) a")).getText();
     Assert.assertTrue(valid.contains("Cerrar sesión"));
     driver.close();
@@ -54,8 +54,8 @@ public class MusicStoreSteps {
   }
 
   @Then("user has successfully logged out")
-  public void userHasSuccessfullyLoggedOut() {
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+  public void userHasSuccessfullyLoggedOut() throws InterruptedException {
+    Thread.sleep(1000);
     String valid = driver.findElement(By.className("page-head")).getText();
     Assert.assertTrue(valid.contains("Ha cerrado su sesión correctamente"));
     driver.close();
@@ -104,7 +104,8 @@ public class MusicStoreSteps {
   }
 
   @Then("the user has modified the data successfully")
-  public void theUserHasModifiedTheDataSuccessfully() {
+  public void theUserHasModifiedTheDataSuccessfully() throws InterruptedException {
+    Thread.sleep(5000);
     String valid = driver.findElement(By.cssSelector(".success-msg ul li span")).getText();
     Assert.assertTrue(valid.contains("The address has been saved."));
     driver.close();
@@ -130,11 +131,11 @@ public class MusicStoreSteps {
   }
 
   @When("the user clicks the my cart button")
-  public void theUserClicksTheMyCartButton() {
+  public void theUserClicksTheMyCartButton() throws InterruptedException {
+    Thread.sleep(7000);
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     driver.findElement(By.className("top-link-cart")).click();
-    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    driver.findElement(By.className("top-link-cart")).click();
+    Thread.sleep(3500);
   }
 
   @Then("the vinyls have been added to the cart successfully")
@@ -292,8 +293,8 @@ public class MusicStoreSteps {
     driver.findElement(By.id("search")).sendKeys(Keys.ENTER);
   }
 
-  @When("^filter by (.*)")
-  public void filterByOption(String option) throws InterruptedException {
+  @When("^sort by (.*)")
+  public void sortByOption(String option) throws InterruptedException {
     Thread.sleep(5000);
     Select select = new Select(driver.findElement(By.cssSelector(".col-main table:nth-of-type(2) tbody tr td:nth-of-type(3) select")));
     select.selectByVisibleText(option);
@@ -301,7 +302,8 @@ public class MusicStoreSteps {
 
   @When("select the first track of a random vinyl")
   public void selectTheFirstTrackOfARandomVinyl() throws InterruptedException {
-    WebElement element = driver.findElement(By.cssSelector("#product-list-table tbody tr:nth-of-type("+new Random().nextInt(7 + 2)+") td:nth-of-type("+new Random().nextInt(6 + 2)+") ul:nth-of-type(1) li:nth-of-type(1) span label a"));
+    idRandom = new Random().nextInt(6) + 1;
+    WebElement element = driver.findElement(By.cssSelector("#product-list-table tbody tr:nth-of-type("+idRandom+") td:nth-of-type("+idRandom+") ul:nth-of-type(1) li:nth-of-type(1) span label a"));
     JavascriptExecutor jse = (JavascriptExecutor)driver;
     jse.executeScript("arguments[0].scrollIntoView()", element);
     Thread.sleep(3000);
@@ -310,6 +312,7 @@ public class MusicStoreSteps {
 
   @Then("the track has been played successfully")
   public void theTrackHasBeenPlayedSuccessfully() throws InterruptedException {
+    Thread.sleep(3000);
     String valid = driver.findElement(By.cssSelector("video")).getTagName();
     Assert.assertEquals(valid, "video");
     Thread.sleep(15000);
@@ -318,7 +321,7 @@ public class MusicStoreSteps {
 
   @When("select SocialNetworks")
   public void selectSocialNetworks() {
-    idRandom = new Random().nextInt(4 + 2);
+    idRandom = new Random().nextInt(4) + 1;
     driver.findElement(By.cssSelector(".header-top-right ul li:nth-of-type(3) a:nth-of-type("+idRandom+")")).click();
   }
 
@@ -333,7 +336,7 @@ public class MusicStoreSteps {
 
   @When("select footer option")
   public void selectFooterOption() throws InterruptedException {
-    idRandom = new Random().nextInt(6 + 2);
+    idRandom = new Random().nextInt(6) + 1;
     WebElement element = driver.findElement(By.cssSelector(".cards p a:nth-of-type("+idRandom+")"));
     JavascriptExecutor jse = (JavascriptExecutor)driver;
     jse.executeScript("arguments[0].scrollIntoView()", element);

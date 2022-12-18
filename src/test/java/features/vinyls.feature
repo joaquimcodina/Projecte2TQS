@@ -17,41 +17,7 @@
 ## (Comments)
 #Sample feature Definition Template
 
-Feature: MusicStore Scenarios
-
-  Scenario Outline: Login User
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    Then user has successfully logged in
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: Logout User
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And the user clicks button logout
-    Then user has successfully logged out
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: Modify Address Book
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And the user clicks button my account
-    And selects address book
-    And modifies data
-    Then the user has modified the data successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
+Feature: Vinyls
 
   Scenario: New Vinyls
     Given the user is in the index page
@@ -190,72 +156,6 @@ Feature: MusicStore Scenarios
       | email                  | password       |
       | practica.tqs@gmail.com | practicatqs123 |
 
-  Scenario Outline: TopMusicBySuze
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select TopMusicBySuze
-    Then redirected to menu option successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: RinconDeCMillan
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select RinconDeCMillan
-    Then redirected to menu option successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: Temazos
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select Temazos
-    Then redirected to menu option successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: Remember90s
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select Remembers
-    Then redirected to menu option successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: MaterialDJ
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select MaterialDJ
-    Then redirected to menu option successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: Ofertas
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select Ofertas
-    Then redirected to menu option successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
   Scenario Outline: Search
     Given the user is in the index page
     When the user search vinyls <name>
@@ -272,7 +172,7 @@ Feature: MusicStore Scenarios
   Scenario Outline: SortBy
     Given the user is in the index page
     When select record-vinyl menu
-    And filter by <option>
+    And sort by <option>
     And the user adds a vinyl of the selected category to the cart
     And the user clicks the my cart button
     Then the vinyls have been added to the cart successfully
@@ -292,28 +192,6 @@ Feature: MusicStore Scenarios
     And select record-vinyl menu
     And select the first track of a random vinyl
     Then the track has been played successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: SocialNetworks
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select SocialNetworks
-    Then redirected to socialnetwork successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: Footer
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select footer option
-    Then redirected to footer option successfully
     Examples:
       | email                  | password       |
       | practica.tqs@gmail.com | practicatqs123 |
