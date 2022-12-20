@@ -16,29 +16,7 @@
 #""
 ## (Comments)
 #Sample feature Definition Template
-
-Feature: User Account
-
-  Scenario Outline: Login User
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    Then user has successfully logged in
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: Logout User
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And the user clicks button logout
-    Then user has successfully logged out
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
+Feature: Address Book
 
   Scenario Outline: Modify Address Book
     Given the user is in the index page

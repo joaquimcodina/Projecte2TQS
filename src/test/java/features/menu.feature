@@ -83,25 +83,3 @@ Feature: Menu
     Examples:
       | email                  | password       |
       | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: SocialNetworks
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select SocialNetworks
-    Then redirected to socialnetwork successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
-
-  Scenario Outline: Footer
-    Given the user is in the index page
-    When the user clicks the login option
-    And the user enters <email> <password> in the login form
-    And the user clicks button login
-    And select footer option
-    Then redirected to footer option successfully
-    Examples:
-      | email                  | password       |
-      | practica.tqs@gmail.com | practicatqs123 |
